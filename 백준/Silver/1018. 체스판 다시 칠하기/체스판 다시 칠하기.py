@@ -9,8 +9,10 @@
 #    Solved: 2025/01/31 17:55:17 by deveronica    ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-N, M = map(int, input().split())
-nums = [[1 if k == "W" else -1 for k in list(input())] for _ in range(N)]
+import sys
+
+N, M = map(int, sys.stdin.readline().split())
+nums = [[1 if k == "W" else -1 for k in list(sys.stdin.readline())] for _ in range(N)]
 
 def calc(x, y):
     ans1 = 0
