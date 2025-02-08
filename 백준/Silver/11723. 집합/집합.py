@@ -17,21 +17,22 @@ S = set()
 
 for _ in range(M):
     e = sys.stdin.readline().split()
-    
-    if e[0] == "add":
-        if e[1] not in S:
-            S.add(e[1])
-    elif e[0] == "remove":
-        if e[1] in S:
-            S.remove(e[1])
-    elif e[0] == "check":
-        print(1 if e[1] in S else 0)
-    elif e[0] == "toggle":
-        if e[1] in S:
-            S.remove(e[1])
-        elif e[1] not in S:
-            S.add(e[1])
-    elif e[0] == "all":
-        S = set(map(str, range(1, 21)))
-    elif e[0] == "empty":
-        S = set()
+    cmd = e[0]
+    try:
+        x = int(e[1])
+        if cmd == "check":
+            print(1 if x in S else 0)
+        elif cmd == "add":
+            S.add(x)
+        elif cmd == "remove":
+            S.discard(x)
+        elif cmd == "toggle":
+            if x in S:
+                S.remove(x)
+            else:
+                S.add(x)
+    except:
+        if cmd == "all":
+            S = set(range(1, 21))
+        elif cmd == "empty":
+            S.clear()
